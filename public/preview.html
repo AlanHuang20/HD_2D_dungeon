@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tileset Preview</title>
+<style>
+  body { background: #12131c; color: #eee; font-family: sans-serif; padding: 20px; }
+  h1 { font-size: 18px; margin-bottom: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(29, 40px); gap: 2px; }
+  .tile { background: #1c1e2d; border: 1px solid #2e334d; text-align: center; position: relative; cursor: pointer; padding: 2px; }
+  .tile:hover { border-color: #f39c12; transform: scale(1.6); z-index: 10; background: #25283b; }
+  .tile img { width: 32px; height: 32px; image-rendering: pixelated; display: block; margin: 0 auto; }
+  .tile span { font-size: 9px; color: #9aa; display: block; margin-top: 2px; }
+</style>
+</head>
+<body>
+<h1>Tileset Grid (29 columns x 21 rows = 609 tiles)</h1>
+<div id="grid" class="grid"></div>
+<script>
+  const grid = document.getElementById('grid');
+  for (let i = 1; i <= 609; i++) {
+    const d = document.createElement('div');
+    d.className = 'tile';
+    d.title = `Index: ${i} (Row ${Math.floor((i-1)/29)}, Col ${(i-1)%29})`;
+    d.innerHTML = `<img src="/separate/texture_16px%20${i}.png"><span>${i}</span>`;
+    grid.appendChild(d);
+  }
+</script>
+</body>
+</html>
